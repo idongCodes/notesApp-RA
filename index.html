@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <script src="index.js"></script>
+        <title>Note Taker App</title>
+    </head>
+    <body>
+        <div class="front-page">
+            <h2 class="header">Note Taker App</h2>
+                <textarea id="note" name="note-text" class="note-area"></textarea>
+                <br>
+                <button id="submit" onclick="saveNote()" class="submit">Save Note</button>
+            <div class="notes-link">
+                <a href="index2.html"">View Notes</a>
+            </div> 
+        </div>
+
+        <script>
+            var textElement = document.getElementById("note");
+            
+            function saveNote() {
+                // If no value in text field
+                // Send empty field alert
+                if(textElement.value == '') {
+                    alert('Text field is empty!');
+                }
+
+                // Save helper func getNoteId to variable id
+                const id = getNoteId();
+
+                // Save helper func getExistingNotes to variable noteObject
+                let noteObject = getExistingNotes();
+
+                // If no notes to return
+                if(!noteObject){
+                    // Set noteObject to empty object
+                    noteObject = {};
+                }
+
+                // Assign text area element contents to noteObject keys
+                noteObject[id] = textElement.value;
+
+                // In localstorage set the contents of noteObject to notes
+                localStorage.setItem('notes', JSON.stringify(noteObject));
+
+                // Send alert on success
+                alert('Note Saved!');
+            }
+            </script>
+    </body>
+</html>

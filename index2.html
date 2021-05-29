@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html onload="getNotes()">
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <script src="index.js"></script>
+    </head>
+    
+    <body>
+        <div class="second-page">
+            <ol id="notes-list">
+        
+            </ol>
+        </div>
+        
+        <a href="index.html"><h3>Back</h3></a>
+        
+        
+        <script>
+            (function getNotes() {
+                // Save helper function getExistingNotes to variable notes
+                let notes = getExistingNotes();
+
+                // Save localstorage values to variable notesArray
+                let notesArray = Object.values(notes);
+
+                // Store ol html element to variable orderedList
+                let orderedList = document.getElementById('notes-list');
+
+                // For each item in local storage
+                notesArray.forEach(note => {
+                    // Create an html list element
+                    let listItem = document.createElement('li');
+
+                    // Assign text value of each local storage item to the html list item
+                    listItem.innerHTML = note;
+
+                    // Append each list item to pre-existing ol element
+                    orderedList.appendChild(listItem);
+                })
+            })()
+        </script>
+    </body>
+</html>
+
