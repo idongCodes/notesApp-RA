@@ -16,7 +16,7 @@
         
         
         <script>
-            function getNotes() {
+            (function getNotes() {
                 // Save helper function getExistingNotes to variable notes
                 let notes = getExistingNotes();
 
@@ -37,7 +37,7 @@
                     // Append each list item to pre-existing ol element
                     orderedList.appendChild(listItem);
                 })
-            }
+            })()
         </script>
     </body>
 </html>
