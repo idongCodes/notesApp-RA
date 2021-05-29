@@ -20,6 +20,10 @@
                 // Save helper function getExistingNotes to variable notes
                 let notes = getExistingNotes();
 
+                if(!notes){
+                    return alert('Cannot Save Empty Note')
+                }
+
                 // Save localstorage values to variable notesArray
                 let notesArray = Object.values(notes);
 
